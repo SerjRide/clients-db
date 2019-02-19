@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import FilltextService from '../../../services/filltext-service';
+import Spinner from '../spinner';
 
 import './t-body.css';
 
@@ -10,27 +11,38 @@ export default class TBody extends Component {
 
   state = {
     list: {}
+  };
+
+  componentDidMount() {
+
+    // Получить весь список
+    this.filltextService
+      .getLiteData()
+      .then((list) => {
+        this.setState({list});
+        console.log(this.state.list);
+      });
+
+    // Получить конкретную строку
+    // this.filltextService
+    //   .getLiteLine(1)
+    //   .then((list) => {
+    //     this.setState({list});
+    //     console.log(this.state.list);
+    //   });
+
   }
-
-  constructor() {
-    super();
-    this.updateLiteData();
-  };
-
-  onTableLoaded = (list) => {
-    this.setState({list});
-    console.log(this.state.list);
-  };
-
-  updateLiteData() {
-      this.filltextService
-        .getLiteData(2)
-        .then(this.onTableLoaded);
-  };
 
   render() {
 
+    const { list } = this.state
     const { id, firstName, lastName, email, phone, city  } = this.state.list
+
+    if (!list) {
+      return <Spinner />
+    }else{
+
+    }
 
     return (
 

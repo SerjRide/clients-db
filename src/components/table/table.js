@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import TBody from './t-body';
-import FilltextService from '../../services/filltext-service';
 
 import './table.css';
 
@@ -10,9 +9,8 @@ export default class Table extends Component {
   render() {
 
     return (
-      <div className="my-table">
       <table id="dtBasicExample"
-        className="table table-striped table-bordered" cellSpacing="0">
+        className="table table-sm" cellSpacing="0">
         <thead>
           <tr>
             <th className="th-sm">ID</th>
@@ -25,7 +23,6 @@ export default class Table extends Component {
         </thead>
         <TBody />
       </table>
-      </div>
     );
   };
 };
