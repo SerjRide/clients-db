@@ -1,0 +1,31 @@
+.row {
+  justify-content: space-between;
+}
+
+.col-sm-12.col-md-6 {
+  width: 190px;
+}
+
+.col-sm-12 {
+  flex: inherit;
+}
+
+.pagination {
+  justify-content: flex-end;
+}
+
+.table-responsive {
+  display: table;
+}
+
+@media screen and (min-width: 576px) {
+  .col-sm-12 {
+    flex: inherit;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .table-responsive {
+    display: block;
+  }
+}

@@ -12,28 +12,20 @@ export default class Table extends Component {
   };
 
   componentDidMount() {
-
-    // get all elements
     this.filltextService
       .getLiteData()
       .then((list) => {
         this.setState({list});
-      });
-
-    // get one string
-    // this.filltextService
-    //   .getLiteLine(1)
-    //   .then((list) => {
-    //     this.setState({list});
-    //     console.log(this.state.list);
-    //   });
-
-  }
+      })
+      .catch((err) => {
+        console.error('Could not fetch', err);
+      })
+  };
 
   renderTab(arr) {
     return arr.map(({id, firstName, lastName, email, phone, city}) => {
       return (
-        <tr key={ id }>
+        <tr key={ Math.random()*1000 }>
           <td>{ id }</td>
           <td>{ firstName }</td>
           <td>{ lastName }</td>
@@ -43,21 +35,17 @@ export default class Table extends Component {
         </tr>
       );
     });
-  }
+  };
 
   render() {
 
     const { list } = this.state
-
-    if (!list) {
-      return <Spinner />
-    }
-
+    if (!list) {return <Spinner />}
     const renderList = this.renderTab(list)
 
     return (
       <table id="dtBasicExample"
-        className="table table-sm" cellSpacing="0">
+        className="table table-sm table-responsive" cellSpacing="0">
         <thead>
           <tr>
             <th className="th-sm">ID</th>
@@ -68,9 +56,7 @@ export default class Table extends Component {
             <th className="th-sm">City</th>
           </tr>
         </thead>
-        <tbody>
-          { renderList }
-        </tbody>
+        <tbody>{ renderList }</tbody>
       </table>
     );
   };
