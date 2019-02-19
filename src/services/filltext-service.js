@@ -34,10 +34,9 @@ export default class FilltextService {
       description: list.description
     }
   }
+
+  speakMe(text) {
+    return console.log(text);
+  };
+
 };
-
-const filltext = new FilltextService();
-
-filltext.getLiteData(1).then((list) => {
-    console.log(list.description);
-});

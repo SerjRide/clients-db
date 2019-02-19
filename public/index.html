@@ -4,9 +4,36 @@
     <meta charset="utf-8" />
     <title>Clients-db</title>
     <link rel="stylesheet"
-    href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+      href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+    <link href=".favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous">
+    <link
+      type="stylesheet"
+      rel="stylesheet"
+      href="./index.css">
+    <link type="stylesheet" href="./mdb.min.css" rel="stylesheet">
+    <link type="stylesheet" href="./datatables.min.css" rel="stylesheet">
+
+
   </head>
   <body>
     <div id="root"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./popper.min.js"></script>
+    <script type="text/javascript" src="./bootstrap.min.js"></script>
+    <script type="text/javascript" src="./mdb.js"></script>
+    <script type="text/javascript" src="./datatables.min.js"></script>
+    <script>
+    $(document).ready(function () {
+
+      $('#dtBasicExample').DataTable();
+      $('.dataTables_length').addClass('bs-select');
+
+    });
+    </script>
   </body>
 </html>

@@ -1,66 +1,30 @@
 import React, { Component } from 'react';
 
+import TBody from './t-body';
 import FilltextService from '../../services/filltext-service';
 
 import './table.css';
 
 export default class Table extends Component {
 
-  filltextService = new FilltextService();
-
-  state = {
-    list: {}
-  }
-
-  constructor() {
-    super();
-    this.updateLiteData();
-  }
-
-  onTableLoaded = (list) => {
-    this.setState({list})
-  };
-
-  updateLiteData() {
-    this.filltextService
-      .getLiteData(30)
-      .then(this.onTableLoaded);
-  };
-
   render() {
 
-    const { list: {id, firstName, lastName, email,
-          phone, description, street, city, state, zip} } = this.state;
-
     return (
-      <div className="table d-flex">
-          <table className="table table-hover table-sm">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>{id}</th>
-                <th>{firstName}</th>
-                <th>{lastName}</th>
-                <th>{email}</th>
-                <th>{phone}</th>
-                <th>Street: {street}<br />
-                    City: {city}<br />
-                    State: {state}<br />
-                    Zip: {zip}</th>
-                <th>{description}</th>
-              </tr>
-            </tbody>
-          </table>
+      <div className="my-table">
+      <table id="dtBasicExample"
+        className="table table-striped table-bordered" cellSpacing="0">
+        <thead>
+          <tr>
+            <th className="th-sm">ID</th>
+            <th className="th-sm">First Name</th>
+            <th className="th-sm">Last Name</th>
+            <th className="th-sm">Email</th>
+            <th className="th-sm">Phone</th>
+            <th className="th-sm">City</th>
+          </tr>
+        </thead>
+        <TBody />
+      </table>
       </div>
     );
   };
