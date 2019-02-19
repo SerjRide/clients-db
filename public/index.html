@@ -29,9 +29,11 @@
     <script type="text/javascript" src="./datatables.min.js"></script>
     <script>
     $(document).ready(function () {
+      setTimeout(function() {
 
-      $('#dtBasicExample').DataTable();
-      $('.dataTables_length').addClass('bs-select');
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+      },200);
 
     });
     </script>

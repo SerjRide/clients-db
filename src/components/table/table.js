@@ -1,12 +1,59 @@
 import React, { Component } from 'react';
-
-import TBody from './t-body';
-
+import FilltextService from '../../services/filltext-service';
+import Spinner from './spinner';
 import './table.css';
 
 export default class Table extends Component {
 
+  filltextService = new FilltextService();
+
+  state = {
+    list: null
+  };
+
+  componentDidMount() {
+
+    // get all elements
+    this.filltextService
+      .getLiteData()
+      .then((list) => {
+        this.setState({list});
+      });
+
+    // get one string
+    // this.filltextService
+    //   .getLiteLine(1)
+    //   .then((list) => {
+    //     this.setState({list});
+    //     console.log(this.state.list);
+    //   });
+
+  }
+
+  renderTab(arr) {
+    return arr.map(({id, firstName, lastName, email, phone, city}) => {
+      return (
+        <tr key={ id }>
+          <td>{ id }</td>
+          <td>{ firstName }</td>
+          <td>{ lastName }</td>
+          <td>{ email }</td>
+          <td>{ phone }</td>
+          <td>{ city }</td>
+        </tr>
+      );
+    });
+  }
+
   render() {
+
+    const { list } = this.state
+
+    if (!list) {
+      return <Spinner />
+    }
+
+    const renderList = this.renderTab(list)
 
     return (
       <table id="dtBasicExample"
@@ -21,7 +68,9 @@ export default class Table extends Component {
             <th className="th-sm">City</th>
           </tr>
         </thead>
-        <TBody />
+        <tbody>
+          { renderList }
+        </tbody>
       </table>
     );
   };
